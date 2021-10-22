@@ -6,15 +6,26 @@ namespace Project1
     {
         public static void Main(string[] args)
         {
+            Console.SetWindowPosition(0, 8970);
             Console.ForegroundColor = ConsoleColor.Green;
-            int y = 0;
+            int y = 29;
             int i = 1;
             while (i == 1)
             {
-                Console.SetCursorPosition(0,8000 - y);
-                Console.WriteLine(matrix());
-                System.Threading.Thread.Sleep(40);
-                y += 1;
+                if (y < 9000)
+                {
+                    Console.SetCursorPosition(0, 9000 - y);
+                    Console.WriteLine(matrix());
+                    System.Threading.Thread.Sleep(1);
+                    y += 1;
+                }
+                else
+                {
+                    y = 29;
+                    Console.SetCursorPosition(0, 9000 - y);
+                    Console.SetWindowPosition(0, 8970);
+                    Console.MoveBufferArea(0, 0, 120, 29, 0, 8971);
+                }
             }
         }
 
@@ -23,9 +34,8 @@ namespace Project1
             char[] b = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', };
             Random z = new Random();
             Random c = new Random();
-            char v = b[z.Next(0, 61)];
-            char[] a = { ' ', v, v};
-            string x = $"{a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]} {a[c.Next(0, 2)]}";
+            char[] a = { ' ', b[z.Next(0, 61)], b[z.Next(0, 61)] };
+            string x = $"{a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} {a[c.Next(0, 3)]} ";
             return x;
         }
     }
