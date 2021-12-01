@@ -1,0 +1,133 @@
+using System;
+
+namespace SamRab1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            Console.Write("Количество стоек с товарами : ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Stoyka[] stoyki = new Stoyka[n];
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine("Стойка" + i);
+                Console.Write("Количество товаров : ");
+                int tov = Convert.ToInt32(Console.ReadLine());
+                Tovar[] tovar = new Tovar[tov];
+                string[] kl = { "Эконом", "Стандарт", "Премиум"};
+                for (int l = 1; l <= tov; l++)
+                {
+                    Console.Write("название товара : ");
+                    string name = Console.ReadLine();
+                    Console.Write("тип товара : ");
+                    string tip = Console.ReadLine();
+                    Console.Write("Размер пошлины :");
+                    int pohslina = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Параметры : ");
+                    string obpar = Console.ReadLine();
+                    string[] param = obpar.Split(); 
+                    string klass = kl[random.Next(0,2)];
+                    Console.Write("клиентская цена : ");
+                    int klient_cost = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("корпоративная цена : ");
+                    int korp_cost = Convert.ToInt32(Console.ReadLine());
+                    Cost cost = new Cost(klient_cost, korp_cost);
+                    tovar[l - 1] = new Tovar(name, tip, pohslina, param, klass, cost);
+                }
+                stoyki[i - 1] = new Stoyka(tovar);
+            }
+            string[] Mname = {"Каля-Баля","Мешанина","Электрон"};
+            string[] loyal = {"золото","серебро","бронза"};
+            Mag magaz = new Mag(Mname[random.Next(0,2)], loyal[random.Next(0,2)], stoyki);
+            int skid = 0;
+            if (magaz.loyal == "золото")
+            {
+                
+            }
+            Console.WriteLine("_________________________");
+            Console.WriteLine(magaz.name);
+            Console.WriteLine(magaz.loyal);
+            for(int i = 0; i < n; i++)
+            {
+                Console.WriteLine(" стойка " + n);
+                for (int l = 0; l < stoyki[i].tovars.Length; l++)
+                {
+                    Console.WriteLine(stoyki[i].tovars[0].name);
+                    Console.WriteLine(stoyki[i].tovars[0].tip);
+                    Console.WriteLine(stoyki[i].tovars[0].klass);
+                    for (int j = 0; j < stoyki[i].tovars[0].param.Length; j++)
+                    {
+                        Console.WriteLine(stoyki[i].tovars[0].param[j]);
+                    }
+                    for (int z = 0; z < 3; z++)
+                    {
+                        Console.Write(10*(z+1));
+                        Console.WriteLine((stoyki[i].tovars[0].cost.klient + stoyki[i].tovars[0].posh));
+                    }
+                    
+                }
+                
+            }
+        }
+        
+        struct Mag
+        {
+            public string name;
+            public string loyal;        
+            public Stoyka[] stoyki;
+
+            public Mag(string name, string loyal, Stoyka[] stoyki)
+            {
+                this.name = name;
+                this.loyal = loyal;
+                this.stoyki = stoyki;
+            }
+
+        }
+
+        struct Stoyka
+        {
+            public Tovar[] tovars;
+
+            public Stoyka(Tovar[] tovars)
+            {
+                this.tovars = tovars;
+            }
+        }
+
+        struct Tovar
+        {
+            public string name;
+            public string tip;
+            public int posh;
+            public string[] param;
+            public string klass;
+            public Cost cost;
+
+            public Tovar(string name, string tip, int posh, string[] param, string klass, Cost cost)
+            {
+                this.name = name;
+                this.tip = tip;
+                this.posh = posh;
+                this.param = param;
+                this.klass = klass;
+                this.cost = cost;
+            }   
+        }
+
+        struct Cost
+        {
+            public int klient;
+            public int korp;
+
+            public Cost(int klient, int korp)
+            {
+                this.klient = klient;
+                this.korp = korp;
+            }
+        }
+
+    }
+}
